@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гармония жизни - Упражнения</title>
+    <style>
+        /* Базовые стили */
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #45a049;
+            --text-color: #333;
+            --light-color: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 4px 8px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+            --primary-dark: #3e8e41;
+            --primary-light: #66BB6A;
+            --text-light: #555;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* Шапка */
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        header li {
+            display: inline;
+            padding: 0 20px;
+        }
+
+        header #branding {
+            float: left;
+        }
+
+        header #branding h1 {
+            margin: 0;
+        }
+
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        /* Основной контент */
+       #showcase {
+            min-height: 500px;
+            background: url('images/exercise.jpg') no-repeat center center/cover;
+            color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        #showcase .showcase-content {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+        }
+
+        #showcase h1 {
+            font-size: 55px;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+        }
+
+        #showcase p {
+            font-size: 20px;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* Стили для разделов упражнений */
+        .exercise-section {
+            margin: 50px 0;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .exercise-section:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .exercise-section h2 {
+            color: var(--primary-dark);
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+        }
+
+        .exercise-section h2::before {
+            content: "💪";
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .exercise-section p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* Стили для категорий упражнений */
+        .exercise-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .exercise-category {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .exercise-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .exercise-category-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .exercise-category-content {
+            padding: 25px;
+        }
+
+        .exercise-category h3 {
+            color: var(--primary-dark);
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .exercise-category p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        /* Стили для списка упражнений */
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .exercise-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .exercise-list li::before {
+            content: "▶";
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 0.8em;
+        }
+
+        .exercise-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Стили для видео-упражнений */
+        .video-exercises {
+            margin: 60px 0;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .video-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 соотношение */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h3 {
+            color: var(--primary-dark);
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .video-info p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        /* Секция подписки */
+        #newsletter {
+            padding: 20px;
+            margin-top: 20px;
+            color: white;
+            background-color: var(--primary-color);
+            text-align: center;
+        }
+
+        #newsletter form {
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        #newsletter input[type="email"] {
+            padding: 4px;
+            height: 25px;
+            width: 250px;
+        }
+
+        .button {
+            height: 38px;
+            background: var(--secondary-color);
+            border: 0;
+            padding: 0 20px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            margin-top: 20px;
+            color: white;
+            background-color: var(--primary-color);
+            text-align: center;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            #showcase {
+                min-height: 400px;
+            }
+            #showcase h1 {
+                font-size: 36px;
+            }
+            #showcase p {
+                font-size: 18px;
+            }
+
+            header #branding,
+            header nav,
+            header nav li,
+            #newsletter form {
+                float: none;
+                text-align: center;
+                width: 100%;
+            }
+
+            header nav li {
+                display: block;
+                padding: 10px;
+            }
+
+            #newsletter input[type="email"] {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span>Гармония</span> жизни</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Главная</a></li>
+                    <li><a href="nutrition.html">Питание</a></li>
+                    <li class="current"><a href="exercises.html">Упражнения</a></li>
+                    <li><a href="motivation.html">Мотивация</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>Физическая активность</h1>
+            <p>Регулярные упражнения - ключ к здоровому телу и ясному уму</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="exercise-section">
+            <h2>Категории упражнений</h2>
+            <p>Выберите подходящий тип физической активности для вашего уровня подготовки и целей.</p>
+            
+            <div class="exercise-categories">
+                <div class="exercise-category">
+                    <img src="images/cardio.jpg" alt="Кардио упражнения" class="exercise-category-img">
+                    <div class="exercise-category-content">
+                        <h3>Кардио тренировки</h3>
+                        <p>Улучшают работу сердечно-сосудистой системы и помогают сжигать калории.</p>
+                        <ul class="exercise-list">
+                            <li>Бег</li>
+                            <li>Велоспорт</li>
+                            <li>Прыжки со скакалкой</li>
+                            <li>Плавание</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="exercise-category">
+                    <img src="images/strength.jpg" alt="Силовые упражнения" class="exercise-category-img">
+                    <div class="exercise-category-content">
+                        <h3>Силовые тренировки</h3>
+                        <p>Укрепляют мышцы, улучшают осанку и ускоряют метаболизм.</p>
+                        <ul class="exercise-list">
+                            <li>Приседания</li>
+                            <li>Отжимания</li>
+                            <li>Подтягивания</li>
+                            <li>Упражнения с гантелями</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="exercise-category">
+                    <img src="images/flexibility.jpg" alt="Растяжка" class="exercise-category-img">
+                    <div class="exercise-category-content">
+                        <h3>Гибкость и растяжка</h3>
+                        <p>Увеличивают подвижность суставов и предотвращают травмы.</p>
+                        <ul class="exercise-list">
+                            <li>Йога</li>
+                            <li>Пилатес</li>
+                            <li>Динамическая растяжка</li>
+                            <li>Статические упражнения</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="exercise-section video-exercises">
+            <h2>Видео-упражнения для дома</h2>
+            <p>Тренируйтесь дома с нашими подборками упражнений разного уровня сложности.</p>
+            
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="video/1.mp4" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Утренняя зарядка на 10 минут</h3>
+                        <p>Бодрящий комплекс для начала дня</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="video/2.mp4" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Интервальная тренировка</h3>
+                        <p>25 минут интенсивных упражнений</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="video/3.mp4" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Йога для начинающих</h3>
+                        <p>Базовые асаны для гибкости</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="exercise-section">
+            <h2>Советы по тренировкам</h2>
+            <ul class="exercise-list">
+                <li>Начинайте с разминки 5-10 минут</li>
+                <li>Занимайтесь 3-5 раз в неделю</li>
+                <li>Сочетайте разные виды активности</li>
+                <li>Увеличивайте нагрузку постепенно</li>
+                <li>Не забывайте про восстановление</li>
+                <li>Следите за техникой выполнения</li>
+            </ul>
+        </section>
+    </main>
+
+    <section id="newsletter">
+        <div class="container">
+            <h2>Подпишитесь на нашу рассылку</h2>
+            <form id="subscribeForm">
+                <input type="email" placeholder="Введите ваш email..." required>
+                <button type="submit" class="button">Подписаться</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>Гармония жизни &copy; 2025 | Все права защищены</p>
+        <div id="currentDateTime"></div>
+    </footer>
+
+    <script>
+        // Обновление даты и времени
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            const dateTimeString = now.toLocaleDateString('ru-RU', options);
+            document.getElementById('currentDateTime').textContent = 'Текущие дата и время: ' + dateTimeString;
+        }
+
+        // Обработка формы подписки
+        document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert('Спасибо за подписку, ' + email + '! Мы отправили вам письмо с подтверждением.');
+            this.reset();
+        });
+
+        // Инициализация при загрузке страницы
+        window.onload = function() {
+            updateDateTime();
+            setInterval(updateDateTime, 60000); // Обновляем каждую минуту
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гармония жизни - Правильное питание</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #45a049;
+            --text-color: #333;
+            --light-color: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        header li {
+            display: inline;
+            padding: 0 20px;
+        }
+
+        header #branding {
+            float: left;
+        }
+
+        header #branding h1 {
+            margin: 0;
+        }
+
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        header .highlight, header .current a {
+            color: #e6e6e6;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            color: #e6e6e6;
+            font-weight: bold;
+        }
+
+        #showcase {
+            min-height: 400px;
+            background: url('images/nutrition.jpg') no-repeat center center/cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        #showcase h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+        }
+
+        #showcase p {
+            font-size: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* Стили для разделов питания */
+        .nutrition-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nutrition-section h2, 
+        .nutrition-section h3 {
+            color: #2c8a4a;
+            border-bottom: 2px solid #2c8a4a;
+            padding-bottom: 10px;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .nutrition-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .nutrition-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .nutrition-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .nutrition-card-content {
+            padding: 15px;
+        }
+
+        .nutrition-card h4 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+
+        .nutrition-card p {
+            margin: 0;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .nutrition-tips ul {
+            padding-left: 20px;
+        }
+
+        .nutrition-tips li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .nutrition-tips li:before {
+            content: "•";
+            color: #2c8a4a;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Стили для рецептов */
+        .recipes-section {
+            margin: 30px 0;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .recipe-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .recipe-content {
+            padding: 20px;
+        }
+
+        .recipe-content h3 {
+            color: #2c8a4a;
+            margin-top: 0;
+        }
+
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .recipe-ingredients h4, 
+        .recipe-steps h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .recipe-steps ol {
+            padding-left: 20px;
+        }
+
+        .recipe-steps li {
+            margin-bottom: 10px;
+        }
+
+        /* Стили для рассылки */
+        #newsletter {
+            padding: 15px;
+            color: white;
+            background: var(--primary-color);
+            clear: both;
+        }
+
+        #newsletter h2 {
+            float: left;
+        }
+
+        #newsletter form {
+            float: right;
+            margin-top: 15px;
+        }
+
+        #newsletter input[type="email"] {
+            padding: 4px;
+            height: 25px;
+            width: 250px;
+        }
+
+        .button {
+            height: 38px;
+            background: var(--secondary-color);
+            border: 0;
+            padding: 0 20px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #3e8e41;
+        }
+
+        /* Футер */
+        footer {
+            padding: 20px;
+            margin-top: 20px;
+            color: white;
+            background-color: var(--primary-color);
+            text-align: center;
+        }
+
+        /* Адаптивность */
+        @media(max-width: 768px) {
+            header #branding,
+            header nav,
+            header nav li,
+            #newsletter h2,
+            #newsletter form {
+                float: none;
+                text-align: center;
+                width: 100%;
+            }
+
+            header {
+                padding-bottom: 20px;
+            }
+
+            #newsletter button {
+                display: block;
+                width: 100%;
+            }
+
+            #newsletter form input[type="email"] {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            #showcase h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Гармония</span> жизни</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Главная</a></li>
+                    <li class="current"><a href="nutrition.html">Питание</a></li>
+                    <li><a href="exercises.html">Упражнения</a></li>
+                    <li><a href="motivation.html">Мотивация</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>Правильное питание</h1>
+            <p>Основы здорового рациона и вкусные рецепты для вашего благополучия</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="nutrition-section">
+            <h2>Основы здорового питания</h2>
+            <p>Правильное питание - это не диета, а образ жизни. Оно обеспечивает организм всеми необходимыми питательными веществами для поддержания здоровья, энергии и хорошего самочувствия.</p>
+            
+            <div class="nutrition-grid">
+                <div class="nutrition-card">
+                    <img src="images/balanced-diet.jpg" alt="Сбалансированное питание">
+                    <div class="nutrition-card-content">
+                        <h4>Баланс нутриентов</h4>
+                        <p>Оптимальное соотношение белков, жиров и углеводов для вашего организма.</p>
+                    </div>
+                </div>
+                
+                <div class="nutrition-card">
+                    <img src="images/vitamins.jpg" alt="Витамины и минералы">
+                    <div class="nutrition-card-content">
+                        <h4>Витамины и минералы</h4>
+                        <p>Как получать все необходимые микроэлементы из пищи.</p>
+                    </div>
+                </div>
+                
+                <div class="nutrition-card">
+                    <img src="images/hydration.jpg" alt="Гидратация">
+                    <div class="nutrition-card-content">
+                        <h4>Гидратация</h4>
+                        <p>Роль воды в организме и сколько нужно пить ежедневно.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="nutrition-section">
+            <h3>Полезные продукты</h3>
+            <div class="nutrition-grid">
+                <div class="nutrition-card">
+                    <img src="images/vegetables.jpg" alt="Овощи">
+                    <div class="nutrition-card-content">
+                        <h4>Овощи</h4>
+                        <p>Источник клетчатки, витаминов и антиоксидантов.</p>
+                    </div>
+                </div>
+                
+                <div class="nutrition-card">
+                    <img src="images/fruits.jpg" alt="Фрукты">
+                    <div class="nutrition-card-content">
+                        <h4>Фрукты</h4>
+                        <p>Натуральные сладости с полезными микроэлементами.</p>
+                    </div>
+                </div>
+                
+                <div class="nutrition-card">
+                    <img src="images/proteins.jpg" alt="Белковые продукты">
+                    <div class="nutrition-card-content">
+                        <h4>Белковые продукты</h4>
+                        <p>Мясо, рыба, яйца, бобовые - строительный материал для организма.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="nutrition-section nutrition-tips">
+            <h3>Практические советы</h3>
+            <ul>
+                <li>Ешьте 5-6 раз в день небольшими порциями</li>
+                <li>Не пропускайте завтрак - это самый важный прием пищи</li>
+                <li>Уменьшите потребление сахара и соли</li>
+                <li>Выбирайте цельнозерновые продукты вместо рафинированных</li>
+                <li>Готовьте на пару, запекайте или варите вместо жарки</li>
+                <li>Внимательно читайте состав продуктов</li>
+            </ul>
+        </section>
+
+        <section class="recipes-section">
+            <h2>Полезные рецепты</h2>
+            
+            <div class="recipe-card">
+                <img src="images/breakfast-bowl.jpg" alt="Энергетический завтрак" class="recipe-image">
+                <div class="recipe-content">
+                    <h3>Энергетическая овсяная каша</h3>
+                    <div class="recipe-meta">
+                        <span>Время: 15 мин</span>
+                        <span>Калории: 320 ккал</span>
+                    </div>
+                    <div class="recipe-ingredients">
+                        <h4>Ингредиенты:</h4>
+                        <ul>
+                            <li>Овсяные хлопья - 50 г</li>
+                            <li>Молоко (миндальное) - 200 мл</li>
+                            <li>Банан - 1 шт</li>
+                            <li>Мёд - 1 ч.л.</li>
+                            <li>Грецкие орехи - 10 г</li>
+                            <li>Семена чиа - 5 г</li>
+                        </ul>
+                    </div>
+                    <div class="recipe-steps">
+                        <h4>Приготовление:</h4>
+                        <ol>
+                            <li>Залейте овсяные хлопья молоком и оставьте на 5 минут</li>
+                            <li>Добавьте нарезанный банан и мёд</li>
+                            <li>Посыпьте орехами и семенами чиа</li>
+                            <li>Тщательно перемешайте</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recipe-card">
+                <img src="images/quinoa-salad.jpg" alt="Салат с киноа" class="recipe-image">
+                <div class="recipe-content">
+                    <h3>Салат с киноа и овощами</h3>
+                    <div class="recipe-meta">
+                        <span>Время: 25 мин</span>
+                        <span>Калории: 280 ккал</span>
+                    </div>
+                    <div class="recipe-ingredients">
+                        <h4>Ингредиенты:</h4>
+                        <ul>
+                            <li>Киноа - 100 г</li>
+                            <li>Огурец - 1 шт</li>
+                            <li>Помидор черри - 10 шт</li>
+                            <li>Авокадо - 1/2 шт</li>
+                            <li>Оливковое масло - 2 ст.л.</li>
+                            <li>Лимонный сок - 1 ст.л.</li>
+                            <li>Зелень (петрушка, кинза) - по вкусу</li>
+                        </ul>
+                    </div>
+                    <div class="recipe-steps">
+                        <h4>Приготовление:</h4>
+                        <ol>
+                            <li>Отварите киноа согласно инструкции на упаковке</li>
+                            <li>Нарежьте овощи кубиками</li>
+                            <li>Смешайте все ингредиенты в большой миске</li>
+                            <li>Заправьте оливковым маслом и лимонным соком</li>
+                            <li>Посыпьте свежей зеленью</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recipe-card">
+                <img src="images/smoothie.jpg" alt="Зелёный смузи" class="recipe-image">
+                <div class="recipe-content">
+                    <h3>Зелёный энергетический смузи</h3>
+                    <div class="recipe-meta">
+                        <span>Время: 10 мин</span>
+                        <span>Калории: 210 ккал</span>
+                    </div>
+                    <div class="recipe-ingredients">
+                        <h4>Ингредиенты:</h4>
+                        <ul>
+                            <li>Шпинат - 50 г</li>
+                            <li>Банан - 1 шт</li>
+                            <li>Яблоко - 1/2 шт</li>
+                            <li>Лимонный сок - 1 ст.л.</li>
+                            <li>Вода - 150 мл</li>
+                            <li>Льняные семена - 1 ч.л.</li>
+                        </ul>
+                    </div>
+                    <div class="recipe-steps">
+                        <h4>Приготовление:</h4>
+                        <ol>
+                            <li>Поместите все ингредиенты в блендер</li>
+                            <li>Взбивайте до однородной массы</li>
+                            <li>При необходимости добавьте воды для нужной консистенции</li>
+                            <li>Подавайте сразу после приготовления</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="newsletter">
+        <div class="container">
+            <h2>Подпишитесь на нашу рассылку</h2>
+            <form id="subscribeForm">
+                <input type="email" placeholder="Введите ваш email..." required>
+                <button type="submit" class="button">Подписаться</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>Гармония жизни &copy; 2025 | Все права защищены</p>
+        <div id="currentDateTime"></div>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+        };
+        
+        function updateDateTime() {
+            const now = new Date();
+            const dateTimeString = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
+            document.getElementById('currentDateTime').textContent = 'Текущие дата и время: ' + dateTimeString;
+        }
+    </script>
+</body>
+</html>
