@@ -478,7 +478,7 @@
     </footer>
 
     <script>
-        // Обновление даты и времени
+     
         function updateDateTime() {
             const now = new Date();
             const options = { 
@@ -492,7 +492,7 @@
             document.getElementById('currentDateTime').textContent = 'Текущие дата и время: ' + dateTimeString;
         }
 
-        // Обработка формы подписки
+       
         document.getElementById('subscribeForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
@@ -500,10 +500,10 @@
             this.reset();
         });
 
-        // Инициализация при загрузке страницы
+     
         window.onload = function() {
             updateDateTime();
-            setInterval(updateDateTime, 60000); // Обновляем каждую минуту
+            setInterval(updateDateTime, 60000); 
         };
     </script>
 </body>
